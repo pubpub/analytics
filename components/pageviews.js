@@ -13,9 +13,6 @@ class Pageviews extends React.Component {
 		this.state = {
 			type: 'table',
 			title: 'Top 100 Pages',
-			labelMapping: {
-				pageviews: 'Pageviews',
-			},
 			renderOnVisible: true,
 		};
 	}
@@ -25,10 +22,11 @@ class Pageviews extends React.Component {
 			.query({
 				analysis_type: 'count',
 				event_collection: 'pageviews',
+				filters: this.context.filters,
 				groupBy: ['page.title', 'url.full'],
 				orderBy: { property_name: 'result', direction: 'DESC' },
 				limit: 100,
-				timeframe: 'this_3_months',
+				timeframe: this.context.timeframe,
 			})
 			.then((results) => {
 				this.setState({
