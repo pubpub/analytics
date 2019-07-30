@@ -7,10 +7,12 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production next start",
-    "export": "NODE_ENV=production next export"
+    "export": "NODE_ENV=production next build && next export"
   },
-  "author": "hello@pubpub.org",
+  "author": "PubPub Team <hello@pubpub.org>",
   "license": "MIT",
+  "description": "PubPub's internal analytics dashboard.",
+  "repository": "https://github.com/pubpub/analytics",
   "dependencies": {
     "@blueprintjs/core": "^3.18.0",
     "@blueprintjs/icons": "^3.10.0",
