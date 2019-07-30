@@ -1,13 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import Layout from '../components/layout';
-import Chart from '../components/chart';
 import { KeenContext, KeenClient } from '../lib/KeenContext';
 
-const Home = (props) => {
-	const { cid } = props.query;
+const Chart = dynamic(() => import('../components/chart.js'), { ssr: false });
+
+const Home = () => {
+	const { query } = useRouter();
+	const cid = query.cid ? query.cid : 123;
+	console.log(cid);
 	const filters = [];
-	if (cid) {
+	if (cid !== 'all') {
 		filters.push({
 			propertyName: 'pubpub.communityId',
 			operator: 'eq',
@@ -86,25 +90,12 @@ const Home = (props) => {
 							'url.info.query_string.utm_source',
 						]}
 						orderBy={{ property_name: 'result', direction: 'DESC' }}
-						limit={25}
+						limit={10}
 					/>
 				</div>
 			</KeenContext.Provider>
 		</Layout>
 	);
-};
-
-Home.getInitialProps = async ({ query }) => {
-	return { query: query };
-};
-
-Home.propTypes = {
-	query: PropTypes.object.isRequired,
-	cid: PropTypes.string,
-};
-
-Home.defaultProps = {
-	cid: null,
 };
 
 export default Home;
