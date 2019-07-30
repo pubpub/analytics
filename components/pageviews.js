@@ -1,21 +1,18 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import getConfig from 'next/config';
-import KeenAnalysis from 'keen-analysis';
+import { KeenContext } from '../lib/KeenContext';
 
 import 'keen-dataviz/dist/keen-dataviz.css';
 
 // eslint-disable-next-line
 const Chart = dynamic(() => import('keen-react-charts'), { ssr: false });
-const { publicRuntimeConfig } = getConfig();
-const { KEEN_PROJECT_ID, KEEN_READ_KEY } = publicRuntimeConfig;
 
 class Pageviews extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			type: 'funnel',
-			title: 'Pageviews',
+			type: 'table',
+			title: 'Top 100 Pages',
 			labelMapping: {
 				pageviews: 'Pageviews',
 			},
@@ -24,13 +21,13 @@ class Pageviews extends React.Component {
 	}
 
 	componentDidMount() {
-		const client = new KeenAnalysis({
-			projectId: KEEN_PROJECT_ID || process.env.KEEN_PROJECT_ID,
-			readKey: KEEN_READ_KEY || process.env.KEEN_READ_KEY,
-		})
+		this.context.client
 			.query({
 				analysis_type: 'count',
 				event_collection: 'pageviews',
+				groupBy: ['page.title', 'url.full'],
+				orderBy: { property_name: 'result', direction: 'DESC' },
+				limit: 100,
 				timeframe: 'this_3_months',
 			})
 			.then((results) => {
@@ -45,4 +42,5 @@ class Pageviews extends React.Component {
 	}
 }
 
+Pageviews.contextType = KeenContext;
 export default Pageviews;
