@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
-import Pages from '../components/pages';
-import PageviewCount from '../components/pageviewCount';
 import Chart from '../components/chart';
 import { KeenContext, KeenClient } from '../lib/KeenContext';
 
@@ -21,7 +19,7 @@ const Home = (props) => {
 			<KeenContext.Provider
 				value={{
 					client: KeenClient,
-					timeframe: 'this_1_months',
+					timeframe: 'this_3_months',
 					filters: filters,
 				}}
 			>

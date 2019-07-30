@@ -13,6 +13,7 @@ export default ({ children, title = 'PubPub Analytics' }) => (
 		<div className="container wide">
 			<header>
 				<h1>PubPub Analytics Dashboard</h1>
+				<h2>Viewing: 90 Days (including today)</h2>
 			</header>
 			<div className="row">{children}</div>
 			<footer>
