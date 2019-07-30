@@ -12,9 +12,13 @@
   "author": "hello@pubpub.org",
   "license": "MIT",
   "dependencies": {
+    "@blueprintjs/core": "^3.18.0",
+    "@blueprintjs/icons": "^3.10.0",
+    "@blueprintjs/select": "^3.10.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "dotenv": "^8.0.0",
+    "file-loader": "^4.1.0",
     "keen-analysis": "^3.4.5",
     "keen-dataviz": "^3.12.0",
     "keen-react-charts": "^1.0.4",

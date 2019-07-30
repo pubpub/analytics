@@ -4,6 +4,18 @@ require('dotenv').config({ path: '.env' });
 
 module.exports = withSass(
 	withCSS({
+		webpack: function(config) {
+			config.module.rules.push({
+				test: /\.(ttf|eot|svg|woff|woff2)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						query: { name: 'fonts/[hash].[ext]' },
+					},
+				],
+			});
+			return config;
+		},
 		/* config options here */
 		serverRuntimeConfig: {},
 		publicRuntimeConfig: {
