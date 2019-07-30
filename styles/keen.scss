@@ -1,0 +1,12 @@
+// Import Keen styles
+// ****************************
+@import '~keen-dataviz/dist/keen-dataviz.css';
+
+// Override some Keen styling
+// ****************************
+.keen-dataviz {
+  margin: 1em 0;
+}
+.keen-dataviz-title {
+  font-size: 2em;
+}

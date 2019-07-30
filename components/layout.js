@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import '../styles/base.scss';
+import '../styles/style.scss';
 
 export default ({ children, title = 'PubPub Analytics' }) => (
 	<div>
@@ -14,7 +14,7 @@ export default ({ children, title = 'PubPub Analytics' }) => (
 			<header>
 				<h1>PubPub Analytics Dashboard</h1>
 			</header>
-			<div className="content">{children}</div>
+			<div className="row">{children}</div>
 			<footer>
 				<a href="https://www.netlify.com">
 					<img
