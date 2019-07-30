@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import KeenAnalysis from 'keen-analysis';
 import dynamic from 'next/dynamic';
 
+// eslint-disable-next-line
 const Chart = dynamic(() => import('keen-react-charts'), { ssr: false });
 
 import 'keen-dataviz/dist/keen-dataviz.css';
-//import './styles/style.css';
 
 class Pageviews extends React.Component {
   constructor(props) {
