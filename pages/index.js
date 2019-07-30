@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
-import Pageviews from '../components/pageviews';
+import Pages from '../components/pages';
 import { KeenContext, KeenClient } from '../lib/KeenContext';
 
 const Home = (props) => {
@@ -23,7 +23,7 @@ const Home = (props) => {
 					filters: filters,
 				}}
 			>
-				<Pageviews />
+				<Pages />
 			</KeenContext.Provider>
 		</Layout>
 	);
