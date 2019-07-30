@@ -6,8 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "export": "NODE_ENV=production npm run build"
+    "start": "NODE_ENV=production next start",
+    "export": "NODE_ENV=production next export"
   },
   "author": "hello@pubpub.org",
   "license": "MIT",
