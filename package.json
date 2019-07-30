@@ -1,7 +1,7 @@
 {
   "name": "pubpub-analytics",
   "version": "0.0.1",
-  "description": "An analytics server for PubPub",
+  "description": "PubPub's internal analytics dashboard.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
@@ -11,7 +11,6 @@
   },
   "author": "PubPub Team <hello@pubpub.org>",
   "license": "MIT",
-  "description": "PubPub's internal analytics dashboard.",
   "repository": "https://github.com/pubpub/analytics",
   "dependencies": {
     "@blueprintjs/core": "^3.18.0",
@@ -27,6 +26,7 @@
     "next": "^9.0.2",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

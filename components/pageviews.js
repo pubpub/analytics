@@ -12,7 +12,7 @@ class Pageviews extends React.Component {
 		super(props);
 		this.state = {
 			type: 'table',
-			title: 'Top 100 Pages',
+			title: 'Top 25 Pages',
 			renderOnVisible: true,
 		};
 	}
@@ -25,7 +25,7 @@ class Pageviews extends React.Component {
 				filters: this.context.filters,
 				groupBy: ['page.title', 'url.full'],
 				orderBy: { property_name: 'result', direction: 'DESC' },
-				limit: 100,
+				limit: 25,
 				timeframe: this.context.timeframe,
 			})
 			.then((results) => {
