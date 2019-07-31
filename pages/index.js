@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Layout from '../components/layout';
@@ -8,6 +8,7 @@ const Chart = dynamic(() => import('../components/chart.js'), { ssr: false });
 
 const Home = () => {
 	const { query } = useRouter();
+	const [communityName, setCommunityName] = useState('all');
 	const cid = query.cid ? query.cid : 123;
 	const filters = [];
 	if (cid !== 'all') {
@@ -16,9 +17,29 @@ const Home = () => {
 			operator: 'eq',
 			propertyValue: cid,
 		});
+		KeenClient.query({
+			analysisType: 'count',
+			eventCollection: 'pageviews',
+			timeframe: 'this_7_days',
+			groupBy: 'url.info.domain',
+			orderBy: { propertyName: 'result', direction: 'DESC' },
+			filters: [{ propertyName: 'pubpub.communityId', operator: 'eq', propertyValue: cid }],
+		}).then((res) => {
+			if (res.result && res.result.length > 0) {
+				setCommunityName(res.result[0]['url.info.domain']);
+			} else {
+				setCommunityName('');
+			}
+		});
 	}
 	return (
 		<Layout>
+			<h2>
+				Community:{' '}
+				<a href={`https://${communityName}`} target="_blank" rel="noopener noreferrer">
+					{communityName}
+				</a>
+			</h2>
 			<h2>Viewing: 90 Days (including today)</h2>
 			<KeenContext.Provider
 				value={{
