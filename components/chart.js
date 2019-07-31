@@ -18,9 +18,9 @@ class Chart extends React.Component {
 	componentDidMount() {
 		this.context.client
 			.query({
-				event_collection: this.props.eventCollection,
-				analysis_type: this.props.analysisType,
-				target_property: this.props.targetProperty,
+				eventCollection: this.props.eventCollection,
+				analysisType: this.props.analysisType,
+				targetProperty: this.props.targetProperty,
 				timeframe: this.context.timeframe,
 				filters: this.context.filters,
 				groupBy: this.props.groupBy,
