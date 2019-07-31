@@ -9,7 +9,6 @@ const Chart = dynamic(() => import('../components/chart.js'), { ssr: false });
 const Home = () => {
 	const { query } = useRouter();
 	const cid = query.cid ? query.cid : 123;
-	console.log(cid);
 	const filters = [];
 	if (cid !== 'all') {
 		filters.push({
@@ -20,6 +19,7 @@ const Home = () => {
 	}
 	return (
 		<Layout>
+			<h2>Viewing: 90 Days (including today)</h2>
 			<KeenContext.Provider
 				value={{
 					client: KeenClient,
