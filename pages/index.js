@@ -68,7 +68,7 @@ const Home = () => {
 					</div>
 					<div className="col-4">
 						<Chart
-							title="Avg. Time on Page (s)"
+							title="Avg. Time on Page (sec)"
 							type="metric"
 							eventCollection="pageviews"
 							analysisType="average"
