@@ -44,7 +44,7 @@ const Home = () => {
 			<KeenContext.Provider
 				value={{
 					client: KeenClient,
-					timeframe: 'this_3_months',
+					timeframe: 'this_90_days',
 					filters: filters,
 				}}
 			>
