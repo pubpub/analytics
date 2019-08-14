@@ -81,8 +81,7 @@ const Home = () => {
 						title="Top 25 Pages"
 						type="table"
 						eventCollection="pageviews"
-						analysisType="count_unique"
-						targetProperty="user.uuid"
+						analysisType="count"
 						groupBy={['page.title', 'url.full']}
 						orderBy={{ property_name: 'result', direction: 'DESC' }}
 						limit={25}
