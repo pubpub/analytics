@@ -100,14 +100,41 @@ const Home = () => {
 				</div>
 				<div className="row">
 					<Chart
-						title="Top 10 Campaigns"
+						title="Top 10 Campaigns (Campaign/Medium)"
 						type="table"
 						eventCollection="pageviews"
 						analysisType="count"
 						groupBy={[
 							'url.info.query_string.utm_campaign',
 							'url.info.query_string.utm_medium',
+						]}
+						orderBy={{ property_name: 'result', direction: 'DESC' }}
+						limit={10}
+					/>
+				</div>
+				<div className="row">
+					<Chart
+						title="Top 10 Campaigns (Source/Content)"
+						type="table"
+						eventCollection="pageviews"
+						analysisType="count"
+						groupBy={[
 							'url.info.query_string.utm_source',
+							'url.info.query_string.utm_content',
+						]}
+						orderBy={{ property_name: 'result', direction: 'DESC' }}
+						limit={10}
+					/>
+				</div>
+				<div className="row">
+					<Chart
+						title="Top 10 Campaigns (Content/Term)"
+						type="table"
+						eventCollection="pageviews"
+						analysisType="count"
+						groupBy={[
+							'url.info.query_string.utm_content',
+							'url.info.query_string.utm_term',
 						]}
 						orderBy={{ property_name: 'result', direction: 'DESC' }}
 						limit={10}
