@@ -12,6 +12,14 @@ class Chart extends React.Component {
 			type: this.props.type,
 			title: this.props.title,
 			renderOnVisible: true,
+			ui: {
+				buttons: {
+					download: {
+						label: 'Download as CSV',
+						type: 'csv',
+					},
+				},
+			},
 		};
 	}
 
@@ -41,6 +49,7 @@ class Chart extends React.Component {
 				results={this.state.results}
 				type={this.state.type}
 				title={this.state.title}
+				ui={this.state.ui}
 				renderOnVisible={this.state.renderOnVisible}
 			/>
 		);
