@@ -36,7 +36,6 @@ class Chart extends React.Component {
 								timeframe: res.timeframe,
 							};
 						});
-						console.log(results);
 					}
 				}
 				this.setState({
