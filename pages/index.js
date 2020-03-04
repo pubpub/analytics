@@ -64,6 +64,7 @@ const Home = () => {
 							type="metric"
 							eventCollection="pageviews"
 							analysisType="count"
+							ui={null}
 						/>
 					</div>
 					<div className="col-4">
@@ -73,15 +74,17 @@ const Home = () => {
 							eventCollection="pageviews"
 							analysisType="count_unique"
 							targetProperty="user.uuid"
+							ui={null}
 						/>
 					</div>
 					<div className="col-4">
 						<Chart
-							title="Avg. Time on Page (seconds)"
+							title="Avg. Time on Page (Mins)"
 							type="metric"
 							eventCollection="pageviews"
 							analysisType="average"
 							targetProperty="page.time_on_page"
+							ui={null}
 						/>
 					</div>
 				</div>
@@ -92,16 +95,18 @@ const Home = () => {
 						eventCollection="pageviews"
 						analysisType="count"
 						interval="monthly"
+						data={{ labels: true }}
 					/>
 				</div>
 				<div className="row">
 					<Chart
-						title="Monthly Time on Page (seconds)"
+						title="Monthly Time on Page (Mins)"
 						type="line"
 						eventCollection="pageviews"
 						analysisType="average"
 						targetProperty="page.time_on_page"
 						interval="monthly"
+						data={{ labels: true }}
 					/>
 				</div>
 				<div className="row">

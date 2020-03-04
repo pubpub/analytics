@@ -8,19 +8,7 @@ const KeenChart = dynamic(() => import('keen-react-charts'), { ssr: false });
 class Chart extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			type: this.props.type,
-			title: this.props.title,
-			renderOnVisible: true,
-			ui: {
-				buttons: {
-					download: {
-						label: 'Download as CSV',
-						type: 'csv',
-					},
-				},
-			},
-		};
+		this.state = {};
 	}
 
 	componentDidMount() {
@@ -36,7 +24,21 @@ class Chart extends React.Component {
 				limit: this.props.limit,
 				interval: this.props.interval,
 			})
-			.then((results) => {
+			.then((initialResults) => {
+				const results = initialResults;
+				if (this.props.targetProperty === 'page.time_on_page') {
+					if (typeof results.result === 'number') {
+						results.result /= 60;
+					} else if (typeof results.result === 'object') {
+						results.result = results.result.map((res) => {
+							return {
+								value: (res.value / 60).toFixed(2),
+								timeframe: res.timeframe,
+							};
+						});
+						console.log(results);
+					}
+				}
 				this.setState({
 					results: results,
 				});
@@ -47,11 +49,12 @@ class Chart extends React.Component {
 		return (
 			<KeenChart
 				results={this.state.results}
-				type={this.state.type}
-				title={this.state.title}
-				ui={this.state.ui}
+				type={this.props.type}
+				title={this.props.title}
+				ui={this.props.ui}
 				renderOnVisible={this.state.renderOnVisible}
 				table={this.props.table}
+				data={this.props.data}
 			/>
 		);
 	}
@@ -69,6 +72,8 @@ Chart.propTypes = {
 	limit: PropTypes.number,
 	interval: PropTypes.string,
 	table: PropTypes.object,
+	ui: PropTypes.object,
+	data: PropTypes.object,
 };
 Chart.defaultProps = {
 	targetProperty: null,
@@ -77,5 +82,14 @@ Chart.defaultProps = {
 	limit: null,
 	interval: null,
 	table: null,
+	ui: {
+		buttons: {
+			download: {
+				label: 'Download as CSV',
+				type: 'csv',
+			},
+		},
+	},
+	data: null,
 };
 export default Chart;
