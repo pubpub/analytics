@@ -51,6 +51,7 @@ class Chart extends React.Component {
 				title={this.state.title}
 				ui={this.state.ui}
 				renderOnVisible={this.state.renderOnVisible}
+				table={this.props.table}
 			/>
 		);
 	}
@@ -67,6 +68,7 @@ Chart.propTypes = {
 	orderBy: PropTypes.object,
 	limit: PropTypes.number,
 	interval: PropTypes.string,
+	table: PropTypes.object,
 };
 Chart.defaultProps = {
 	targetProperty: null,
@@ -74,5 +76,6 @@ Chart.defaultProps = {
 	orderBy: null,
 	limit: null,
 	interval: null,
+	table: null,
 };
 export default Chart;
