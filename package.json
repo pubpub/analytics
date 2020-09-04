@@ -24,7 +24,7 @@
     "keen-dataviz": "^3.12.0",
     "keen-react-charts": "^1.0.4",
     "next": "^9.0.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
